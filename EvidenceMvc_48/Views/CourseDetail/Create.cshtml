@@ -1,0 +1,61 @@
+﻿@using EvidenceMvc_48
+@inherits System.Web.Mvc.WebViewPage<List<Course>>
+
+
+   
+    <form 
+          action="Create"
+          method="post"
+          enctype="multipart/form-data">
+
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>Subject Name</td>
+                <td>Course_Name</td>
+                <td>Is_Major</td>
+                <td>Start_Date</td>
+                <td>Image</td>
+
+            </tr>
+
+
+            <tr>
+                <td>
+                    <input type="number" name="co_su.Id" />
+                </td>
+                <td><input type="text" name="co_su.Subject_Name" /></td>
+                <td>
+
+                    <select name="co_su.Course_Id">
+                        @foreach (var item in Model)
+                        {
+                            <option value="@item.Id">@item.Course_Name</option>
+                        }
+                    </select>
+
+                </td>
+                <td>
+                    <input id="IsLast" type="checkbox"  value="true" name="co_su.Is_Major" />
+
+                </td>
+                <td> <input type="date" name="co_su.Start_Date" /> </td>
+                <td> 
+                <input type="file" name="co_su.Book_Image_Http" />
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="3">Action</td>
+                <td colspan="3"> <input type="submit" value="submit" /> </td>
+            </tr>
+
+
+        </table>
+
+
+      
+
+    </form>
+
+

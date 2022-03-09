@@ -1,0 +1,48 @@
+﻿@using EvidenceMvc_48
+@inherits System.Web.Mvc.WebViewPage<List<Course_Subject>>
+
+<a href="CourseDetail/Create"> Create </a> &nbsp;
+<a href="Login/LogOn"> LogOn </a> &nbsp;
+<a href="Login/LogOut"> LogOut </a> &nbsp;
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Subject Name</td>
+        <td>Course_Name</td>
+        <td>Is_Major</td>
+        <td>Start_Date</td>
+        <td>Image</td>
+        <td>Action</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Subject_Name</td>
+            <td>@item.Course.Course_Name</td>
+            <td>
+
+                @if (item.Is_Major == true)
+                {
+                    <input type="checkbox" checked="checked" />
+                }
+                else
+                {
+                    <input type="checkbox" />
+                }
+
+
+
+            </td>
+            <td> @item.Start_Date </td>
+            <td><img src="@item.Book_Image" width="50" height="50" /></td>
+            <td>
+                <a href="CourseDetail/Edit/@item.Id">Edit</a> &nbsp;
+                <a href="CourseDetail/Delete/@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,86 @@
+﻿@using EvidenceMvc_48
+@inherits System.Web.Mvc.WebViewPage<Course_Subject>
+
+
+<form action="./Edit"
+      method="post"
+      enctype="multipart/form-data">
+
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Subject Name</td>
+            <td>Course_Name</td>
+            <td>Is_Major</td>
+            <td>Start_Date</td>
+            <td>Image</td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+                <input disabled type="text"  value="@Model.Id" />
+                <input type="hidden" name="co_su.Id" value="@Model.Id" />
+            </td>
+            <td><input type="text" name="co_su.Subject_Name" value="@Model.Subject_Name" /></td>
+            <td>
+
+                <select name="co_su.Course_Id">
+                    @foreach (var item in ViewBag.CourseList)
+                    {
+                        if (item.Id == Model.Course_Id)
+                        {
+                            <option value="@item.Id" selected="selected">@item.Course_Name</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Id">@item.Course_Name</option>
+                        }
+
+                    }
+                </select>
+
+            </td>
+            <td>
+                @if (Model.Is_Major)
+                {
+                    <input id="IsLast" type="checkbox" value="@Model.Is_Major" checked="checked" name="co_su.Is_Major" />
+                }
+                else
+                {
+                    <input id="IsLast" type="checkbox" value="@Model.Is_Major"  name="co_su.Is_Major" />
+                }
+
+
+
+
+            </td>
+            <td>
+            @{ 
+                string dateValue = Model.Start_Date.ToString("yyyy-MM-dd");
+            }
+            
+            <input type="date" name="co_su.Start_Date" value="@dateValue" /> 
+            
+            
+            </td>
+            <td>
+                <input type="file" name="co_su.Book_Image_Http" />
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="3">Action</td>
+            <td colspan="3"> <input type="submit" value="submit" /> </td>
+        </tr>
+
+
+    </table>
+
+
+
+
+</form>
+
+

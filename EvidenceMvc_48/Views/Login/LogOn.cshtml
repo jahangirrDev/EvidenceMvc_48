@@ -1,0 +1,23 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+    <form action="LogOn" method="post">
+
+
+        Name :  <input type="text" name="name" />
+        Password :  <input type="text" name="password" />
+
+        <input type="hidden" name="ReturnUrl" value="@ViewBag.ReturnUrl" />
+
+        <input type="submit" value="LogOn" />
+
+    </form>
+
+</body>
+</html>
